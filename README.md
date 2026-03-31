@@ -1,2 +1,103 @@
-# eleon
-Personal Wisdom-Praxis Model - Extract and apply your personal decision-making model from meeting transcripts
+# Eleon: Personal Wisdom-Praxis Model
+
+从你的会议记录中提炼属于你自己的决策模型,并用它来分析新问题。
+
+## 为什么需要 Eleon?
+
+市面上有很多决策模型(巴菲特、芒格、YC 等),但最适合你的决策模型应该来自你自己过去的实践。
+
+Eleon 是一个 Claude Code Skill,它通过分析你在会议中的真实发言,提炼出你的:
+
+- 核心价值观与决策原则
+- 思考框架与分析维度
+- 判断标准与评估指标
+- 风险偏好
+- 常用类比与思维模型
+- 决策模式与语言风格
+
+## 安装
+
+将本仓库克隆到 Claude Code 的 skills 目录:
+
+```bash
+git clone git@github.com:ray11081988/eleon.git ~/.claude/skills/eleon
+```
+
+## 使用方式
+
+### 1. 导入会议记录
+
+提供会议记录文件(支持 `.txt`, `.md`, `.docx`, `.pdf`),Eleon 会自动:
+
+- 识别你的发言(支持多种发言人标注格式)
+- 提取决策模式
+- 生成个人决策模型
+
+```
+> 帮我导入 ~/Downloads/product_review.txt 里的会议记录
+```
+
+### 2. 持续更新
+
+每次导入新的会议记录,Eleon 会对比现有模型,识别新的决策模式或思维变化,并合并更新。
+
+```
+> 我又有一份新的会议记录,更新一下我的决策模型
+```
+
+### 3. 应用决策模型
+
+面对新问题时,让 Eleon 按照你的思维方式来分析:
+
+```
+> 用我的决策模型分析一下这个新的产品机会
+```
+
+Eleon 会按照你的思考框架、判断标准和风险偏好来输出分析,并标注每个分析维度的来源。
+
+## 触发词
+
+以下短语会自动触发 Eleon:
+
+- "导入会议记录"
+- "提炼我的决策模型"
+- "更新我的思维模式"
+- "用我的决策模型分析"
+- "按照我的思维方式"
+- "我的决策偏好"
+
+## 数据存储
+
+所有数据保存在本地 `~/Eleon/` 目录,不上传到云端:
+
+```
+~/Eleon/
+├── DECISION_MODEL.md          # 主决策模型文件
+├── meeting-records/           # 原始会议记录
+└── extraction-history/        # 提取历史(可追溯)
+```
+
+## Skill 文件结构
+
+```
+~/.claude/skills/eleon/
+├── SKILL.md              # 主入口,核心理念与快速开始
+├── WORKFLOWS.md          # 导入、更新、应用的完整工作流程
+├── MODEL_TEMPLATE.md     # DECISION_MODEL.md 的结构模板
+├── PRINCIPLES.md         # 真实性、可追溯性、隐私保护等设计原则
+├── EXAMPLES.md           # 完整的对话示例与最佳实践
+└── README.md             # 本文件
+```
+
+## 设计原则
+
+1. **真实性** - 只从实际发言中提取,不臆测
+2. **可追溯性** - 每个要素标注来源会议
+3. **客观性** - 用你的框架分析,不模仿语气
+4. **隐私保护** - 所有数据仅存本地
+5. **持续演进** - 模型随新记录不断完善
+6. **明确说明** - 应用时标注使用了哪些模型要素
+
+## License
+
+MIT
